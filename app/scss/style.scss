@@ -19,41 +19,62 @@
  * * History
  * * Entry
 **/
+@import "bourbon";
+
+
+
+
 /*------------------------------------*\
     #Generic
 \*------------------------------------*/
+
+//Variables
+$shadowDark: 0 0 4px 0px #777;
+$shadowLight: 0 0 2px 0 #aaa;
+
+
+//Body styles
 html, body {
   height: 100%;
   width: 100%;
   margin: 0;
   background: #fafafa;
   font-family: 'Arial';
-  color: #555; }
+  color: #555;
+}
 
+
+//Box Sizing
 * {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box; }
+  @include box-sizing(border-box);
+}
+
+
+
+
 
 /*------------------------------------*\
     #Navbar
 \*------------------------------------*/
+
+//Navbar
 .nav {
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
+  @include position (fixed, 0);
   height: 36px;
   width: 100%;
   background: #ddd;
   text-align: center;
-  border-bottom: 1px solid #ccc; }
+  border-bottom: 1px solid #ccc;
+}
 
+
+
+//Buttons
 .buttons {
-  height: 28px; }
+  height: 28px;
+}
 
-.button, .button--pomodoro, .button--short-break, .button--long-break {
+.button {
   display: inline-block;
   position: relative;
   height: 100%;
@@ -64,101 +85,156 @@ html, body {
   color: #777;
   cursor: pointer;
   outline: none;
-  box-shadow: 0 0 4px 0px #777; }
-  .button:hover, .button--pomodoro:hover, .button--short-break:hover, .button--long-break:hover {
+  box-shadow: $shadowDark;
+  
+  &:hover {
     border-width: 0px;
-    border-style: solid; }
-  .button:active, .button--pomodoro:active, .button--short-break:active, .button--long-break:active {
-    border: none; }
+    border-style: solid;
+  }
+  
+  &:active {
+    border: none;
+  }
+}
 
 .button--pomodoro {
+  @extend .button;
   left: 3px;
   border-top-left-radius: 4px;
   border-bottom-left-radius: 4px;
   background: #bdecb6;
-  color: #12a53f; }
-  .button--pomodoro:hover {
+  color: #12a53f;
+  
+  &:hover {
     background: #aceea5;
     color: #34c75f;
-    border-color: #34c75f; }
-  .button--pomodoro:active {
+    border-color: #34c75f;
+  }
+  
+  &:active {
     background: #12a53f;
-    color: #bdecb6; }
+    color: #bdecb6;
+  }
+}
 
-.button--short-break:hover {
-  background: #ffd6c9;
-  color: #f45d5c;
-  border-color: #f45d5c; }
-.button--short-break:active {
-  background: #f45d5c;
-  color: #ffd6c9; }
+.button--short-break {
+  @extend .button;
+  
+  &:hover {
+    background: #ffd6c9;
+    color: #f45d5c;
+    border-color: #f45d5c;
+  }
+  
+  &:active {
+    background: #f45d5c;
+    color: #ffd6c9;
+  }
+}
 
 .button--long-break {
+  @extend .button;
   right: 3px;
   border-top-right-radius: 4px;
-  border-bottom-right-radius: 4px; }
-  .button--long-break:hover {
+  border-bottom-right-radius: 4px;
+  
+  &:hover {
     background: #fff8e5;
     color: #f6a331;
-    border-color: #f6a331; }
-  .button--long-break:active {
+    border-color: #f6a331;
+  }
+  
+  &:active {
     background: #f6a331;
-    color: #fff8e5; }
+    color: #fff8e5;
+  }
+}
+
+
+
+
 
 /*------------------------------------*\
     #Timer
 \*------------------------------------*/
+
+//Timer Span
 .timer {
   font-size: 60px;
   padding: 1.5em 0 1em 0;
   width: 100%;
   text-align: center;
   background: #fff;
-  border-bottom: 1px solid #ddd; }
+  border-bottom: 1px solid #ddd;
+}
+
+.timer__countdown {
+  
+}
+
+
+
+
 
 /*------------------------------------*\
     #History
 \*------------------------------------*/
+
+//History
 .history {
   padding: 36px 0;
   width: 300px;
   margin: 0 auto;
-  text-align: center; }
+  text-align: center;
+}
 
 .history__title {
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
   margin-bottom: 1px;
   background: #e2e2e2;
-  box-shadow: 0 0 2px 0 #aaa;
+  box-shadow: $shadowLight;
   border: 1px solid #bbb;
   height: 28px;
   line-height: 26px;
   color: #888;
   font-size: 14px;
-  font-weight: normal; }
+  font-weight: normal;
+}
 
+
+//Entries
 .entries {
   display: block;
   list-style: none;
   padding: 0;
-  margin: 0; }
+  margin: 0;
+}
 
 .entry {
   padding: 4px 8px;
   background: #f3f3f3;
-  box-shadow: 0 0 2px 0 #aaa;
+  box-shadow: $shadowLight;
   border: 1px solid #ccc;
   height: 28px;
   line-height: 18px;
   color: #999;
-  font-size: 13px; }
-  .entry:last-child {
+  font-size: 13px;
+  
+  &:last-child {
     border-bottom-left-radius: 4px;
-    border-bottom-right-radius: 4px; }
+    border-bottom-right-radius: 4px;
+  }
+}
 
 .entry__type {
-  float: left; }
+  float: left;
+}
 
 .entry__age {
-  float: right; }
+  float: right;
+}
+
+
+
+
