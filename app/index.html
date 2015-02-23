@@ -25,15 +25,13 @@
 		</div>
 
 		<!-- History -->
-		<div class="history">
+		<div class="history" ng-class="{'history--populated': history.length}">
 			<h3 class="history__title">Timer History</h3>
 			<ul class="entries">
-				<!-- array element: start
-				<li class="entry">
-					<span class="entry__type">Long Break</span>
-					<span class="entry__age">30 min ago</span>
+				<li class="entry" ng-repeat="item in history">
+					<span class="entry__type">{{item.type}}</span>
+					<span class="entry__age">{{formatAge(item.time)}}</span>
 				</li>
-				array element: end -->
 			</ul>
 		</div>
 
