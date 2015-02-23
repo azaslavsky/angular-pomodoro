@@ -1,23 +1,46 @@
 <!doctype html>
-<html lang="en">
+<html lang="en"ng-app="pomodoro" ng-controller="MainCtrl">
 
 	<head>
+		<title>{{title}}</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 		<meta charset="UTF-8">
-		<title>Angular Pomodoro</title>
 		<link rel="stylesheet" href="css/normalize.css">
 		<link rel="stylesheet" href="css/style.css">
 		<style>[ng-cloak] { display: none; }</style>
 	</head>
 
-	<body ng-app="pomodoro">
+	<body ng-cloak>
+		<!-- Navbar -->
+		<nav class="nav">
+			<div class="buttons">
+				<button ng-repeat="button in buttons" class="button button--{{button.key}}" ng-click="click($event, button.key)">{{button.name}}</button>
+			</div>
+		</nav>
 
-		<script type="text/ng-template" id="pomodoro-temp.html">
-		</script>
+		<!-- Timer -->
+		<div class="timer" ng-cloak>
+			<span class="timer__countdown">{{formatTime()}}</span>
+		</div>
 
+		<!-- History -->
+		<div class="history">
+			<h3 class="history__title">Timer History</h3>
+			<ul class="entries">
+				<!-- array element: start
+				<li class="entry">
+					<span class="entry__type">Long Break</span>
+					<span class="entry__age">30 min ago</span>
+				</li>
+				array element: end -->
+			</ul>
+		</div>
+
+		<!-- Load JS Files -->
 		<script src="./bower_components/angular/angular.js"></script>
 		<script src="./js/app.js"></script>
+		<script src="./js/controllers.js"></script>
 	</body>
 
 </html>
